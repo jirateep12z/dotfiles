@@ -1,0 +1,37 @@
+[
+  {
+    "key": "ctrl+i",
+    "command": "inlineChat.start",
+    "when": ""
+  },
+  {
+    "key": "ctrl+l",
+    "command": "workbench.action.terminal.toggleTerminal",
+    "when": ""
+  },
+  {
+    "key": "ctrl+shift+/",
+    "command": "editor.action.blockComment",
+    "when": ""
+  },
+  {
+    "key": "ctrl+alt+b",
+    "command": "workbench.action.toggleSidebarVisibility",
+    "when": ""
+  },
+  {
+    "key": "ctrl+alt+c",
+    "command": "list.collapseAll",
+    "when": ""
+  },
+  {
+    "key": "ctrl+alt+w",
+    "command": "workbench.action.closeAllEditors",
+    "when": ""
+  },
+  {
+    "key": "ctrl+alt+t",
+    "command": "workbench.action.toggleMaximizedPanel",
+    "when": ""
+  }
+]
