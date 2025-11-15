@@ -1,0 +1,96 @@
+customCommands:
+  - key: 'a'
+    command: 'git add .'
+    context: 'files'
+    description: 'add all files'
+    loadingText: 'adding all files'
+    output: terminal
+  - key: 'c'
+    command: 'git cz'
+    context: 'files'
+    description: 'commit with commitizen'
+    loadingText: 'opening commitizen commit tool'
+    output: terminal
+  - key: 'r'
+    command: 'git rebase {{index .PromptResponses 0}}{{if eq (index .PromptResponses 0) "--interactive"}} {{if eq (index .PromptResponses 1) "0"}}--root{{else if eq (index .PromptResponses 1) ""}}--root{{else}}HEAD~{{index .PromptResponses 1}}{{end}}{{end}}'
+    context: 'files'
+    description: 'rebase menu (interactive/abort/continue)'
+    loadingText: 'running rebase command'
+    prompts:
+      - type: 'menu'
+        title: 'Select rebase action'
+        options:
+          - name: 'Interactive rebase'
+            value: '--interactive'
+          - name: 'Abort rebase'
+            value: '--abort'
+          - name: 'Continue rebase'
+            value: '--continue'
+      - type: 'input'
+        title: 'commits? (0=all, n=last n commits)'
+        default: '0'
+        filter: '{{eq (index .PromptResponses 0) "--interactive"}}'
+    output: terminal
+  - key: 'p'
+    command: 'git {{index .PromptResponses 0}} origin {{.CheckedOutBranch.Name}}'
+    context: 'files'
+    description: 'pull, pull rebase, or push to remote'
+    loadingText: '{{index .PromptResponses 0}}ing to remote'
+    prompts:
+      - type: 'menu'
+        title: 'Select action'
+        options:
+          - name: 'pull'
+            value: 'pull'
+          - name: 'pull --rebase'
+            value: 'pull --rebase'
+          - name: 'pull --no-rebase'
+            value: 'pull --no-rebase'
+          - name: 'push'
+            value: 'push'
+          - name: 'push --force'
+            value: 'push --force'
+          - name: 'push --force-with-lease'
+            value: 'push --force-with-lease'
+    output: terminal
+  - key: 'g'
+    command: 'git remote {{index .PromptResponses 0}} {{if eq (index .PromptResponses 0) "add"}}origin {{index .PromptResponses 1}}{{else if eq (index .PromptResponses 0) "remove"}}origin{{else if eq (index .PromptResponses 0) "set-url"}}origin {{index .PromptResponses 1}}{{end}}'
+    context: 'files'
+    description: 'manage git remote (add/remove/set-url)'
+    loadingText: 'managing git remote'
+    prompts:
+      - type: 'menu'
+        title: 'Select remote action'
+        options:
+          - name: 'git remote add origin'
+            value: 'add'
+          - name: 'git remote remove origin'
+            value: 'remove'
+          - name: 'git remote set-url origin'
+            value: 'set-url'
+      - type: 'input'
+        title: 'Enter URL'
+        filter: '{{or (eq (index .PromptResponses 0) "add") (eq (index .PromptResponses 0) "set-url")}}'
+    output: terminal
+  - key: 'u'
+    command: 'git reset {{index .PromptResponses 0}} {{if eq (index .PromptResponses 0) "--soft"}}HEAD~{{index .PromptResponses 1}}{{else if eq (index .PromptResponses 0) "--mixed"}}HEAD~{{index .PromptResponses 1}}{{else if eq (index .PromptResponses 0) "--hard"}}HEAD~{{index .PromptResponses 1}}{{end}}'
+    context: 'files'
+    description: 'reset commit (soft/mixed/hard)'
+    loadingText: 'resetting commit'
+    prompts:
+      - type: 'menu'
+        title: 'Select reset type'
+        options:
+          - name: 'reset --soft (keep changes staged)'
+            value: '--soft'
+          - name: 'reset --mixed (keep changes unstaged)'
+            value: '--mixed'
+          - name: 'reset --hard (discard changes)'
+            value: '--hard'
+      - type: 'input'
+        title: 'commits? (1=last commit, n=last n commits)'
+        default: '1'
+    output: terminal
+
+gui:
+  mouseEvents: false
