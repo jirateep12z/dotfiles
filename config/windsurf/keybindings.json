@@ -1,0 +1,22 @@
+[
+  {
+    "key": "ctrl+shift+/",
+    "command": "editor.action.blockComment"
+  },
+  {
+    "key": "ctrl+alt+c",
+    "command": "list.collapseAll"
+  },
+  {
+    "key": "ctrl+alt+b",
+    "command": "workbench.action.toggleSidebarVisibility"
+  },
+  {
+    "key": "ctrl+alt+w",
+    "command": "workbench.action.closeAllEditors"
+  },
+  {
+    "key": "ctrl+alt+t",
+    "command": "workbench.action.toggleMaximizedPanel"
+  }
+]

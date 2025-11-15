@@ -1,0 +1,31 @@
+{
+  "mcpServers": {
+    "fetch": {
+      "args": ["-m", "mcp_server_fetch"],
+      "command": "python",
+      "env": {}
+    },
+    "filesystem": {
+      "args": ["-y", "@modelcontextprotocol/server-filesystem"],
+      "command": "npx",
+      "disabledTools": [
+        "write_file",
+        "edit_file",
+        "create_directory",
+        "move_file"
+      ],
+      "env": {}
+    },
+    "github-mcp-server": {
+      "serverUrl": "https://api.githubcopilot.com/mcp/",
+      "headers": {
+        "Authorization": "Bearer ..."
+      }
+    },
+    "time": {
+      "args": ["-m", "mcp_server_time"],
+      "command": "python",
+      "env": {}
+    }
+  }
+}

@@ -1,0 +1,23 @@
+[core]
+  editor = nvim
+  ignorecase = false
+
+[user]
+  email = (email)
+  name = (name)
+
+[alias]
+  ad = add
+  rs = reset
+  st = status
+  br = branch
+  ba = branch -a
+  bd = branch -d
+  bm = branch --merged
+  bn = branch --no-merged
+  ci = commit
+  cm = commit -m
+  co = checkout
+  cb = checkout -b
+  pl = "!git pull origin $(git rev-parse --abbrev-ref HEAD)"
+  ps = "!git push origin $(git rev-parse --abbrev-ref HEAD)"

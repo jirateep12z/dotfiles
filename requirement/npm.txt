@@ -1,0 +1,5 @@
+@nestjs/cli
+bun
+commitizen
+cz-conventional-changelog
+npm-check-updates

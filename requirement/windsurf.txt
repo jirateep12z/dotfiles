@@ -1,0 +1,13 @@
+bmewburn.vscode-intelephense-client
+christian-kohler.path-intellisense
+dbaeumer.vscode-eslint
+dsznajder.es7-react-js-snippets
+esbenp.prettier-vscode
+formulahendry.auto-close-tag
+formulahendry.auto-rename-tag
+johnsoncodehk.volar
+leonardssh.vscord
+pkief.material-icon-theme
+vscodevim.vim
+vue.volar
+yandeu.five-server

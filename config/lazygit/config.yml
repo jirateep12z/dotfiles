@@ -1,0 +1,45 @@
+customCommands:
+  - key: 'a'
+    command: 'git add .'
+    context: 'files'
+    description: 'add all files'
+    loadingText: 'adding all files'
+    output: terminal
+  - key: 'c'
+    command: 'git cz'
+    context: 'files'
+    description: 'commit with commitizen'
+    loadingText: 'opening commitizen commit tool'
+    output: terminal
+  - key: 'r'
+    command: 'git rebase --interactive {{if eq (index .PromptResponses 0) "0"}}--root{{else if eq (index .PromptResponses 0) ""}}--root{{else}}HEAD~{{index .PromptResponses 0}}{{end}}'
+    context: 'files'
+    description: 'interactive rebase (0=all, n=last n commits)'
+    loadingText: 'opening rebase tool'
+    prompts:
+      - type: 'input'
+        title: 'commits? (0=all, n=last n commits)'
+        default: '0'
+    output: terminal
+  - key: 'p'
+    command: 'git {{index .PromptResponses 0}} origin {{.CheckedOutBranch.Name}}'
+    context: 'files'
+    description: 'pull, pull rebase, or push to remote'
+    loadingText: '{{index .PromptResponses 0}}ing to remote'
+    prompts:
+      - type: 'menu'
+        title: 'Select action'
+        options:
+          - name: 'pull'
+            value: 'pull'
+          - name: 'pull --rebase'
+            value: 'pull --rebase'
+          - name: 'pull --rebase --autostash'
+            value: 'pull --rebase --autostash'
+          - name: 'push'
+            value: 'push'
+          - name: 'push --force'
+            value: 'push --force'
+          - name: 'push --force-with-lease'
+            value: 'push --force-with-lease'
+    output: terminal
