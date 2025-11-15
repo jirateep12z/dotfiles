@@ -1,0 +1,7 @@
+@angular/cli
+@anthropic-ai/claude-code
+@nestjs/cli
+@openai/codex
+commitizen
+cz-conventional-changelog
+npm-check-updates
